@@ -45,6 +45,12 @@ RUN pip3 install --upgrade pip
 # Install ansible.
 RUN pip3 install ansible ansible-lint
 
+# Upgrade ansible and ansible-lint.
+RUN pip3 install --upgrade ansible ansible-lint
+
+# Upgrade the system agian - I don't think this is needed, but it doesn't hurt anything.
+RUN dnf -y update 
+
 # Create ansible directory and copy ansible inventory file.
 RUN mkdir /etc/ansible
 COPY hosts /etc/ansible/hosts
